@@ -1,0 +1,1606 @@
+function Lerp(a, b, i)
+local com1 = {a.X, a.Y, a.Z, a:toEulerAnglesXYZ()}
+local com2 = {b.X, b.Y, b.Z, b:toEulerAnglesXYZ()}
+local calx = com1[1] + (com2[1] - com1[1]) * i
+local caly = com1[2] + (com2[2] - com1[2]) * i
+local calz = com1[3] + (com2[3] - com1[3]) * i
+local cala = com1[4] + (com2[4] - com1[4]) * i
+local calb = com1[5] + (com2[5] - com1[5]) * i
+local calc = com1[6] + (com2[6] - com1[6]) * i
+return CFrame.new(calx, caly, calz) * CFrame.Angles(cala, calb, calc)
+end
+function TwnSingleNumber(s,f,m)
+local wot=s+(f-s)*m
+return wot
+end
+function TwnVector3(q,w,e)
+local begin={q.x,q.y,q.z}
+local ending={w.x,w.y,w.z}
+local bgx=begin[1]+(ending[1]-begin[1])*e
+local bgy=begin[2]+(ending[2]-begin[2])*e
+local bgz=begin[3]+(ending[3]-begin[3])*e
+return Vector3.new(bgx,bgy,bgz)
+end
+newWeld = function(wld, wp0, wp1, wc0x, wc0y, wc0z)
+wld = Instance.new("Weld", wp1)
+wld.Part0 = wp0
+wld.Part1 = wp1
+wld.C0 = CFrame.new(wc0x, wc0y, wc0z)
+end
+
+local angles = CFrame.Angles
+function clerp(a, b, t)
+	return a:lerp(b, t)
+end
+	
+	
+	
+	Player=game:GetService('Players').LocalPlayer
+	Character=Player.Character
+	Mouse=Player:GetMouse()
+	m=Instance.new('Model',Character)
+
+
+	local function weldBetween(a, b)
+	    local weldd = Instance.new("ManualWeld")
+	    weldd.Part0 = a
+	    weldd.Part1 = b
+	    weldd.C0 = CFrame.new()
+	    weldd.C1 = b.CFrame:inverse() * a.CFrame
+	    weldd.Parent = a
+	    return weldd
+	end
+	
+	it=Instance.new
+	
+	function nooutline(part)
+		part.TopSurface,part.BottomSurface,part.LeftSurface,part.RightSurface,part.FrontSurface,part.BackSurface = 10,10,10,10,10,10
+	end
+	
+	function part(formfactor,parent,material,reflectance,transparency,brickcolor,name,size)
+		local fp=it("Part")
+		fp.formFactor=formfactor
+		fp.Parent=parent
+		fp.Reflectance=reflectance
+		fp.Transparency=transparency
+		fp.CanCollide=false
+		fp.Locked=true
+		fp.BrickColor=BrickColor.new(tostring(brickcolor))
+		fp.Name=name
+		fp.Size=size
+		fp.Position=Character.Torso.Position
+		nooutline(fp)
+		fp.Material=material
+		fp:BreakJoints()
+		return fp
+	end
+	
+	function mesh(Mesh,part,meshtype,meshid,offset,scale,TextureId)
+		local mesh=it(Mesh)
+		mesh.Parent=part
+		if Mesh=="SpecialMesh" then
+			mesh.MeshType=meshtype
+			mesh.MeshId=meshid
+			mesh.TextureId=TextureId
+		end
+		mesh.Offset=offset
+		mesh.Scale=scale
+		return mesh
+	end
+	
+	function weld(parent,part0,part1,c0,c1)
+		local weld=it("Weld")
+		weld.Parent=parent
+		weld.Part0=part0
+		weld.Part1=part1
+		weld.C0=c0
+		weld.C1=c1
+		return weld
+	end
+	
+m = it("Model")
+m.Parent=Character
+
+Main=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Handle",Vector3.new(1.00543773, 0.391631365, 0.391631335))
+Mainweld=weld(m,Character["Head"],Main,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.998975754, -0.000682830811, 0.0148563385, 0.0259631723, -0.999661982, -1.41156534e-007, 0.156423151, 0.00406276854, -0.987683594, 0.987348855, 0.0256432407, 0.15647614))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.667888641, -1.17265511, -4.11537647, -0.307717472, -0.732821405, -0.606864095, -0.415549904, -0.470260233, 0.778572559, -0.855934322, 0.49176544, -0.159816712))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.300250679, 1.62526977))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0373382568, -0.0377731323, -1.29580498, 0.241122589, 0.410154879, -0.879564464, -0.249729916, -0.84956497, -0.46462521, -0.937811315, 0.331687301, -0.10242179))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.24422169, 0.901660919, 2.22398949, 0.830045879, -0.196358129, -0.521981716, 0.194380537, 0.979137838, -0.0592279062, 0.522720158, -0.0523018688, 0.850898623))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.30892372, 0.328653336, 2.35482407, 0.195294321, 0.86321938, -0.465529501, -0.659666002, 0.466868699, 0.58896023, 0.725739121, 0.192073628, 0.660612106))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.300250679, 1.33807349))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.137468338, -0.124969482, -1.01147842, -0.5271101, -0.187228858, -0.828914702, 0.305161655, -0.952071011, 0.0209922045, -0.793112099, -0.241888911, 0.558981717))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.55840683, 0.674345016, -1.4660635, -0.575559855, -0.690740705, -0.437731206, 0.325238317, -0.684482634, 0.652462006, -0.750297606, 0.23316434, 0.618616521))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.325763702, -0.334119797, 1.08664703, -0.924382925, 0.166843235, 0.3430399, 0.00804173946, -0.890556693, 0.454806626, 0.381375641, 0.423175007, 0.821873903))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.426496506, 0.919522285, -4.10405731, 0.182514668, -0.931029439, -0.316031694, 0.295572758, -0.254606694, 0.920768082, -0.937720537, -0.261464924, 0.228718251))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.63927269, -1.53593445, -1.95127964, 0.665423691, -0.0700117052, -0.743174076, -0.62001425, -0.606250107, -0.498038232, -0.415679842, 0.792188168, -0.446822703))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.215397209, 0.200000003, 0.913806379))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.118436813, 0.462921143, -1.20408821, -0.16265811, 0.365683019, -0.916416764, -0.267862529, -0.910270572, -0.31568554, -0.949624181, 0.194125772, 0.2460161))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.815898538, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.35203743, -0.0328450203, 1.66075516, -0.454806864, 0.375888705, -0.807378054, -0.763538897, 0.302078068, 0.57074964, 0.458427042, 0.876050055, 0.149617344))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.215397209, 0.200000003, 1.63179696))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0205898285, 0.31018734, -1.64220428, 0.222580895, -0.216673881, -0.950532079, 0.372626781, -0.882056117, 0.288321376, -0.900889814, -0.418369651, -0.115590364))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.815898538, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.10297966, -0.55796051, 3.29296875, -0.212178066, 0.972045958, 0.100560337, -0.681627691, -0.220949829, 0.697541058, 0.700255394, 0.0794574469, 0.709454596))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.241676331, -0.25841713, -4.50185394, -0.0644369423, -0.988749385, -0.135004789, -0.0245412681, -0.13367568, 0.990722418, -0.997617304, 0.067152828, -0.0156512409))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.211748123, -1.70769119, 3.67618179, -0.015875753, 0.68593812, -0.727489531, -0.712952673, 0.502357125, 0.489219487, 0.701029956, 0.526434422, 0.481064856))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.106702805, 0.447364807, -2.40539169, -0.226430789, 0.142651513, -0.963524818, -0.725730062, -0.684488595, 0.069211185, -0.649645388, 0.714934587, 0.258515269))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.215397209, 0.200000003, 0.61355567))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.295165062, -1.56227112, -1.34210205, 0.0773323998, 0.598757446, -0.797189474, -0.047645539, -0.796451449, -0.602823853, -0.995863438, 0.0846009031, -0.0330636278))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.815898538, 1))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.12920308, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.57110596, -0.274319649, 0.228347778, -0.331928074, 0.909947634, 0.248643339, -0.427634358, -0.380102515, 0.820153713, 0.840801477, 0.165903404, 0.515291035))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718604, 0.652718544))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.855061233, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.591110229, -0.340305328, 0.321567535, -0.198350713, 0.924645722, 0.325102508, -0.604596198, -0.376497239, 0.701934874, 0.77143687, -0.0573280752, 0.633715808))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718604, 0.652718544))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.992132485, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.07857132, -0.852905273, 1.55200577, 0.68184799, 0.370509744, 0.630717397, -0.28487739, -0.659659863, 0.69548434, 0.673738778, -0.653894126, -0.344236314))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.855061591, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.29565144, 0.504840851, 1.78237534, -0.429925382, -0.200945795, 0.880218744, 0.251898438, -0.962904572, -0.0967838168, 0.867009878, 0.180115715, 0.464594632))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.33807445, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.50593567, -0.450271606, 0.754555225, 0.652393103, -0.279083729, 0.704624653, -0.396861374, -0.917873025, 0.00390309095, 0.645662844, -0.282185078, -0.709569991))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652719378, 0.652719259))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.815898418, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.15167236, -1.59879112, 2.2149353, 0.286338568, 0.669376433, 0.685526431, -0.56236881, -0.461861789, 0.685876369, 0.775723577, -0.5819152, 0.244189009))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.855062187, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.93443203, -0.00343322754, 1.57012177, 0.271125436, -0.356629699, 0.894040942, 0.00420079008, -0.928386092, -0.371600032, 0.962532699, 0.104506589, -0.250210643))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652719378, 0.652719259))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.26627433, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.93101501, -0.311177254, -2.19377899, 0.713877678, -0.674749613, 0.187328994, -0.0678355247, 0.199616969, 0.977522731, -0.69697386, -0.710542977, 0.0967310071))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.620082736, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.86171341, 0.0645160675, 2.48277092, 0.721608996, 0.665540099, -0.190624639, 0.035547059, 0.239365965, 0.970278382, 0.691384673, -0.706941485, 0.149071783))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(0.855061591, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.66437531, 0.573194504, 0.953216553, -0.731491506, -0.190567404, 0.654677629, 0.329860628, -0.939222574, 0.0951739848, 0.596747041, 0.285571158, 0.749893129))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718842, 0.652718782))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(2.22577143, 0.261087567, 0.261087567))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.57544899, 0.0153198242, 0.0132718086, 0.999492347, -0.0280659925, -0.0149522554, 0.0293363091, 0.995245755, 0.0929058939, 0.0122738481, -0.093298912, 0.995562732))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.73623216, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.51502991, -0.0483207703, 0.115712166, 0.998743057, 0.00456352811, -0.0498676114, 0.00510538789, 0.981373668, 0.192056999, 0.049815204, -0.192072213, 0.980116189))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718902, 0.652718902))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.08351338, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.00880814, 0.238068581, -0.391887665, 0.735108316, 0.511604667, 0.44483012, -0.640004098, 0.307272673, 0.704255223, 0.223615214, -0.802402437, 0.553309202))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718961, 0.652718902))
+Bark=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Reddish brown","Bark",Vector3.new(1.48167193, 0.200000003, 0.200000003))
+Barkweld=weld(m,Main,Bark,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.843318939, -0.22281456, -0.0614938736, 0.423378617, 0.777047336, 0.4657785, -0.905949771, 0.363134891, 0.217678815, 6.69871724e-006, -0.514136076, 0.857710004))
+mesh("BlockMesh",Bark,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.652718961, 0.652718902))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.215397224, 0.789789677))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.49554634, -0.0937576294, -2.04328537, -0.776799858, 0.297769368, -0.554900169, -0.0153143909, -0.889822185, -0.456053913, -0.629558086, -0.345766127, 0.695774317))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.319832206, 0.267614752, 0.620082855))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.271774292, -2.37092018, -2.4095633, -0.0178592112, 0.9994964, -0.0263367891, -0.93412739, -0.0260705464, -0.355980337, -0.356485963, 0.0182440728, 0.934122503))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m,Enum.Material.Wood,0,0,"Earth green","Leaves",Vector3.new(0.200000003, 0.200000003, 0.933387876))
+Leavesweld=weld(m,Main,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.160387039, -0.918234825, -2.90097046, -0.0717867762, 0.922631383, 0.378945768, -0.412739128, 0.318393081, -0.853389025, -0.908012867, -0.217668548, 0.357950032))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.783262551, 0.815898538, 1))
+	
+m7 = it("Model")
+m7.Parent=Character
+
+handle1=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Burnt Sienna","Handle",Vector3.new(2, 1.5, 2))
+handle1weld=weld(m7,Character["Torso"],handle1,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(4.01000214, -0.200065851, -0.00998878479, 0, 0, -1, 0, 1, 0, 1, 0, 0))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(1.19822073, 0.482865095, 0.565131068))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.32812309, -0.801078796, 0.0684528351, 0.327871025, 0.944722533, -0.000137110197, -0.888900518, 0.308546871, 0.338607043, 0.319931984, -0.110897548, 0.940927863))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.357677996, 0.311179727, 0.536516786))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.10460758, 0.458709717, 0.523349762, -5.92951619e-006, 0.967170179, 0.254129559, -0.94190824, -0.0853600353, 0.324842513, 0.335870504, -0.239364788, 0.910986006))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.490018785, 0.311179727, 0.275412023))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.31361127, 0.299758911, -0.212615967, 0.0673504695, 0.995415568, -0.0679108202, -0.709250152, -0.000106359839, -0.704956949, -0.701732278, 0.095644936, 0.705991387))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.85842675, 1.07303357, 0.794044793))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.216270447, -1.35249329, -0.515544891, 0.848260522, 0.0966747105, -0.520680308, -0.166342646, 0.982074738, -0.0886534899, 0.502776444, 0.161812603, 0.849136412))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.85842675, 1.07303357, 0.85842675))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0262756348, -1.57757139, -0.00284004211, 1, 3.23602471e-005, -9.4147319e-005, -3.23713284e-005, 1, -0.000117716714, 9.41435137e-005, 0.000117719763, 1))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.443520546, 0.482865095, 0.794044793))
+Brickweld=weld(m7,handle1,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.000694274902, -1.37122917, 0.0368766785, 0.922427893, -1.30095996e-005, -0.386169523, -0.127287492, 0.94410497, -0.3040784, 0.364588499, 0.329644918, 0.870867074))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Part=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Earth green","Part",Vector3.new(2, 0.399999976, 2))
+Partweld=weld(m7,handle1,Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0, -0.950022936, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+	
+	
+	
+	
+	
+	
+	
+
+handle2=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Burnt Sienna","Handle",Vector3.new(2, 1.5, 2))
+handle2weld=weld(m7,Character["Torso"],handle2,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-3.99001312, -0.20006299, -0.00998687744, 0, 0, -1, 0, 1, 0, 1, 0, 0))
+Part=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Earth green","Part",Vector3.new(2, 0.399999976, 2))
+Partweld=weld(m7,handle2,Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0, -0.950021982, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.498094559, -1.17303371, 0.372375488, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0816192627, -1.16675711, 0.0781936646, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.257558823, -1.17673492, 0.509040833, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0380401611, -1.2267561, 0.0987167358, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.741851807, -1.07679939, -0.0688495636, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.838516235, -1.37812233, -0.414409637, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.648712158, -1.11469686, -0.334272385, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.336936951, -1.05701137, 0.329097748, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.224309921, -1.14319706, 0.515205383, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.344356537, -1.23472786, 0.410236359, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.283985138, -1.01725006, -0.164085388, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.28444672, -0.886089325, -0.0168151855, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0239372253, -1.10088062, -0.929363251, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.862281799, -0.673377991, 0.763202667, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.524124146, -1.18781567, -0.682189941, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.110155106, -1.20356703, 0.440460205, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0310592651, -1.12458909, -0.198526382, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.186294556, -1.00406337, 0.94108963, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.23815918, -1.08058357, -0.139694214, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.102386475, -1.13620377, 0.279071808, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.277896881, -1.2275238, 0.297203064, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.40007782, -1.28230524, 0.0750961304, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.954734802, -0.763097763, 0.143981934, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.764460564, -0.884032249, 0.24105835, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.618347168, -0.976652622, -0.752529144, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.19642067, -1.2804637, 0.063369751, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0982322693, -1.29929733, -0.665618896, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0996818542, -1.02344513, 0.901409149, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.83322525, -0.822624207, 0.0818634033, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.408187866, -1.21964455, -0.849992752, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.976715088, -1.0276289, -0.550941467, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.813137054, -0.879833221, 0.0309677124, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.325443268, -0.80355072, -0.0744476318, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.720508575, -1.15811157, -0.0620651245, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.131317139, -1.17288518, 0.386053085, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.8007164, -1.03871679, -0.160949707, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.144618988, -0.955351353, -0.174304962, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.328144073, -0.690792084, 0.547893524, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.416015625, -1.04290581, -0.0857467651, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.185465813, -1.06867695, 0.207824707, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.283470154, -1.03387642, -0.242864609, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.339252472, -0.717666626, 0.338363647, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.16519165, -0.920735836, -0.294067383, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.368724823, -1.12091541, -0.114028931, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.751932144, -0.891323566, 0.346061707, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.126636505, -1.18209457, 0.0202827454, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.203487396, -1.06875801, 0.278915405, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.37984848, -1.23728275, -0.494876862, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.627855301, -1.02825546, 0.172721863, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.114471436, -1.15073061, -0.06823349, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.149276733, -1.20520592, 0.219818115, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0748672485, -1.11960125, 0.362602234, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.618133545, -0.789107323, -0.0680351257, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.319301605, -0.681650162, 0.399093628, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.411966324, -1.05651665, 0.0780792236, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.399959564, -1.01058102, 0.465759277, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.477416992, -1.28242111, 0.350456238, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.590515137, -0.897925377, -0.379386902, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.749261856, -1.05343628, -0.195632935, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.563041687, -1.08247471, 0.440895081, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.407676697, -1.15855694, -0.121734619, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.711643219, -0.826839447, 0.0261917114, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.103042603, -1.26252365, 0.404830933, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.460727692, -1.184618, 0.283786774, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.610137939, -1.10904408, 0.524484634, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.625019073, -1.29842091, -0.0453414917, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.118537903, -1.41023827, 0.561637878, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.187747955, -1.14336586, 0.671356201, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.625930786, -1.1187067, 0.554504395, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.213163376, -1.20992374, -0.517112732, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.653770447, -1.17333436, 0.570623398, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-5.53131104e-005, -1.28356457, -0.073638916, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0799598694, -1.08667517, 0.197715759, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.714347839, -0.714080811, 0.648529053, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.480728149, -0.910793781, -0.413208008, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0643081665, -1.1444931, -0.0796699524, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0899238586, -1.0161438, 0.245800018, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.211414337, -1.1304903, 0.0431137085, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0671234131, -1.08160496, -0.528610229, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.22375679, -1.0121851, -0.525039673, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.335037231, -0.756261826, 0.791526794, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.303085327, -1.00191307, 0.0555801392, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.298683167, -1.25282192, 0.443084717, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.295768738, -1.16813517, 0.150779724, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.182609558, -1.11573839, -0.454078674, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0671930313, -1.28880978, 0.557327271, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.554252625, -1.25968552, 0.00266265869, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.339881897, -0.889850616, 0.167320251, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0234203339, -1.22753429, 0.0634460449, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.358942032, -1.10681295, 0.077583313, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.796503067, -0.949303627, 0.130348206, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.497062683, -1.08455372, -0.0618972778, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.227405548, -1.13049221, 0.145431519, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0780639648, -1.09111094, 0.316688538, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.415203094, -0.990314007, 0.0795593262, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.570228577, -1.00925875, -0.197662354, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0113868713, -0.933446884, 0.290252686, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.528289795, -1.17018676, -0.151107788, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.200092316, -0.991149902, -0.19467926, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.444152832, -1.09026861, 0.515281677, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.147064209, -1.05318379, 0.143333435, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.528198242, -1.25316238, 0.279876709, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.299545288, -0.992010117, -0.409732819, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.331520081, -1.18179989, 0.399772644, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.54533577, -1.06890488, 0.698348999, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.0296936, -0.887928486, -0.0404224396, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0850143433, -1.11019421, 0.42049408, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0893707275, -1.18008113, -0.0153598785, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.765762329, -1.1183176, 0.152139664, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0767631531, -1.07754278, 0.757415771, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.107093811, -1.13273048, -0.0834350586, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.178718567, -1.26053858, 0.0344009399, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.866279602, -0.816484451, 0.281633377, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.326843262, -1.02169895, -0.0512771606, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.315040588, -1.11813927, -0.329730988, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.251747131, -1.22837782, 0.569219589, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.224006653, -1.22420955, -0.251903534, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.695724487, -1.08121729, 0.180940628, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.475984573, -0.791015625, -0.089225769, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.656333923, -0.938106537, 0.162513733, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.554847717, -0.95372963, -0.4529953, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.849218369, -1.00649261, 0.132034302, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 1.15139651, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.365921021, -1.01986384, 0.456926346, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.971773148, -0.838395119, 0.346138, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.00537109375, -0.910370827, 0.19260025, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.68151474, -0.90686512, 0.168029785, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.294073105, -0.891866684, -0.208946228, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.223068237, -1.12606144, 0.546417236, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.897979736, -0.920172691, 0.552909851, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.260135651, -1.09335899, -0.195335388, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.15139651, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.282081604, -0.970726967, -0.281974792, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0950317383, -1.0690527, -0.285797119, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.297706604, -1.00023389, 0.755321503, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.125190735, -1.07734966, -0.174926758, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.401931763, -0.974812508, 0.334377289, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.65435791, -0.979255676, 0.0846061707, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.326164246, -1.32068825, 0.30047226, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0557994843, -1.15839386, 0.730812073, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.123931885, -1.10120773, -0.432924271, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.904350281, -1.17654705, -0.192424774, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.671987534, -1.18186092, 0.276435852, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.735462189, -1.19218659, 0.370834351, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.250965118, -1.10003757, -0.658969879, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 1.08637655, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.44512558, -0.990419865, -0.565727234, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.380142212, -1.26623726, 0.585821152, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.444084167, -0.852584839, 0.146232605, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.286571503, -0.931422234, 0.0457229614, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0521202087, -1.12074327, -0.181087494, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.777187347, -1.08385134, 0.513496399, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.932899475, -0.815001965, -0.188179016, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.41179657, -0.991508007, -0.277240753, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.342586517, -0.777095795, 0.789661407, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.563594818, -0.732698441, 0.460914612, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.873210907, -1.00793743, -0.534194946, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.453033447, -0.92162323, 0.708862305, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.460558653, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.558547974, -0.958025932, -0.252496719, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.571634471, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.586395264, -1.252141, -0.0195922852, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.302453995, -1.34230995, 0.475547791, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.00465393066, -1.13653755, 0.522102356, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.839332581, -1.36968613, -0.0342712402, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.579762042, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.846828461, -0.860165596, 0.323577881, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.12562561, -1.01946831, 0.343090057, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.533348083, -1.22882569, 0.753789902, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.322391063, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.292422295, -1.11606884, 0.0125045776, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 1.01322901, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.700567245, -0.857864857, -0.413131714, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.634048462, -1.15055943, 0.745471954, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.598472595, -1.14690423, -0.254001617, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0856571198, -1.02768803, -0.0644683838, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.847969711, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.184566498, -1.0026226, 0.795948029, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0224571228, -1.13359451, 0.471641541, -0.297609776, -0.345908791, 0.889817715, -0.284947097, 0.921751738, 0.263018966, -0.911171496, -0.175273925, -0.372887999))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0490379333, -1.07202053, -0.461963654, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.651512146, -1.37995529, -0.506641388, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.160133362, -1.21673727, 0.330947876, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.00428962708, -1.26803684, 0.272781372, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.215553284, -1.07448196, 0.222938538, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.238750458, -1.10757399, 0.505966187, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.832649231, -0.931783676, -0.340242386, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.347003937, -1.2673645, -0.606147766, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.851135254, -0.776025772, 0.582042694, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.44909668, -1.02540016, -0.0369949341, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.404602051, -1.06356621, -0.015247345, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.422138214, -1.14551258, 0.571788788, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.258113861, -1.16516972, -0.0974960327, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.672103882, -1.06253719, -0.960660934, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0459861755, -1.16820526, 0.0877380371, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.291370392, -1.11310482, -0.129570007, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.07106972, -1.12385082, 0.635940552, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.01524353, -1.02898216, 0.0452423096, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.469932556, -1.2133379, 0.668395996, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.190048218, -1.1973896, -0.492286682, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.517799377, -1.1143949, -0.0443782806, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0799617767, -1.12760258, 0.0256195068, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.14694977, -0.996740341, -0.548089981, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.200115204, -1.15271854, 0.684822083, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.116836548, -1.16959, -0.0157241821, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.153739929, -1.2536726, 0.374275208, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.749038696, -0.796097279, -0.983283997, 0.811791778, 0.246864706, 0.529199481, -0.137661994, 0.961607277, -0.237403899, -0.56748867, 0.11987187, 0.814608753))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.433238983, -1.18200111, 0.518333435, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.7840662, -1.04313564, 0.833267212, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.367397308, -1.12562752, -0.339107513, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.998336792, -0.830773354, 0.208950043, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0161209106, -1.02919841, 0.697006226, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.14761353, -0.988656044, -0.136127472, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0158309937, -1.21335602, 0.346908569, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.221191406, -1.22147369, -0.942224503, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.687753677, -0.964862823, 0.161804199, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.260597229, -1.35400295, -0.120895386, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.521989822, -1.09272528, 0.00504302979, -0.595584214, 0.224563465, -0.771265686, 0.0371576101, 0.966804028, 0.252803117, 0.802433074, 0.12190716, -0.584157407))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.212661743, -1.20129514, 0.108634949, -0.531193376, 0.13645336, 0.836190224, -0.0369473994, 0.982275963, -0.183763295, -0.846444607, -0.128508896, -0.516736865))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.242881775, -1.1282773, -0.164577484, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.238929749, -1.08528233, 0.00696563721, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.20557785, -1.20886087, 0.498344421, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.979579926, -0.862815857, 0.155410767, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.565071106, -1.01872826, 0.592849731, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.357803345, -0.99758625, -0.752815247, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.440076828, -1.08263206, -0.12688446, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.573448181, -1.09501839, 0.493400574, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.477401733, -1.38650513, 0.0765151978, 0.862166822, 0.246953562, -0.442359954, -0.27449435, 0.961587012, 0.00182524766, 0.425818324, 0.119851634, 0.896835744))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.623603821, -1.11826754, -0.0849075317, 0.935347676, -0.168725237, 0.310896337, 0.110375084, 0.974239945, 0.19665651, -0.336068571, -0.149627015, 0.929876149))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.627408981, -0.98598671, -0.248832703, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.700942993, -0.964026451, 0.253091812, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0675735474, -1.23394012, 0.399965286, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.305774689, -1.05926323, 0.0323791504, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.545146942, -1.20541668, -0.164489746, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0370445251, -1.05174065, 0.403358459, 0.755249143, 0.260963142, 0.601246119, -0.359938711, 0.931755006, 0.0477170981, -0.547761679, -0.252450049, 0.797637939))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0404281616, -1.05764866, -0.39289093, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.822753906, -0.944982529, 0.37670517, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.02402687, -0.895633698, -0.145324707, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.839874268, -1.13019371, -0.670253754, 0.733933151, -0.168635532, -0.657954633, 0.225437194, 0.974256098, 0.00176547922, 0.640718579, -0.14962317, 0.753055573))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.817926407, -0.90063858, 0.0401916504, -0.167025968, -0.340009511, -0.925470591, -0.191880628, 0.931918859, -0.307748526, 0.967100918, 0.126177892, -0.220895872))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.371423721, -1.14614964, 0.0788803101, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Dark orange","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.943584442, -0.86574173, -0.0371780396, 0.157747686, -0.345752418, -0.924970806, 0.241325498, 0.921794534, -0.303408653, 0.957537353, -0.175357029, 0.228849828))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.480010986, -1.2189579, -0.251636505, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.381713867, -1.03909874, -0.531826019, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.489383698, -1.08006859, 0.162708282, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.379972458, -1.16380596, 0.33102417, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.106723785, -1.01802921, -0.384384155, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.13457489, -1.09282684, -0.331634521, 0.875628889, -0.172007784, 0.4513174, 0.21643424, 0.975102663, -0.0482827052, -0.431775749, 0.139958262, 0.891056299))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.824617386, -0.975418091, -0.0746231079, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.907594681, -0.911933422, 0.161880493, -0.431598574, 0.375274032, -0.820299983, 0.0953570455, 0.92324245, 0.372196704, 0.897011578, 0.0824182034, -0.434255153))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.173885345, -1.12891293, -0.381820679, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.760108948, -1.09453678, 0.0821609497, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0693778992, -1.08041096, -0.0589370728, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.550804138, -0.996128082, 0.303771973, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0276908875, -1.18450832, 0.525856018, -0.0898671746, -0.171863884, -0.981013119, -0.157070428, 0.975117803, -0.156442434, 0.983490169, 0.140029103, -0.114625812))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.272201538, -1.14088154, 0.0436553955, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.00123786926, -1.14574718, 0.234008789, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.238300323, -1.16394901, 0.441421509, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.856559753, -0.973299026, -0.119253159, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.585739136, -1.21741199, 0.0899581909, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.388175964, -1.13421059, 0.673500061, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Earth green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.724845886, -1.00554276, 0.474079132, 0.915227354, -0.1678859, -0.3662965, 0.136454359, 0.984489083, -0.110279575, 0.379129261, 0.0509481318, 0.923940122))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0578994751, -1.03217387, -0.298311234, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Sand green","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.821445465, -0.94625473, 0.289604187, 0.714907348, 0.375126451, 0.590074301, -0.231624752, 0.923309982, -0.30634746, -0.659740448, 0.0823342353, 0.74696964))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Nougat","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.559753418, -1.0222826, -0.434059143, 0.994484782, -2.59728295e-005, 0.104881682, 0.0123268347, 0.99309814, -0.116636731, -0.104154758, 0.117286302, 0.987621248))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.383956909, -1.17115211, 0.554458618, -0.876841009, 5.66838753e-005, -0.480780542, -0.056416925, 0.993079126, 0.103009507, 0.477458984, 0.11744713, -0.870769382))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.489654541, -1.19607162, 0.2133255, 0.703120649, -0.167977154, 0.690945089, 0.155899867, 0.984471679, 0.0806899741, -0.693769932, 0.050983455, 0.718389869))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0,"Brick yellow","Brick",Vector3.new(0.200000003, 0.300000012, 0.200000003))
+Brickweld=weld(m7,handle2,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.413093567, -1.05725002, -0.237762451, -0.381760478, -0.167817891, -0.908898354, -0.112652399, 0.984494925, -0.134459063, 0.917370319, 0.0510584153, -0.394746363))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.27091679, 1, 0.298008472))
+	
+	
+	
+	
+	
+	
+	
+
+handle3=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Burnt Sienna","Handle",Vector3.new(2, 1.5, 2))
+handle3weld=weld(m7,Character["Torso"],handle3,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-4.0099926, -0.200004578, -0.00999450684, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+Cylinder=part(Enum.FormFactor.Custom,m7,Enum.Material.Pebble,0,0,"Dark stone grey","Cylinder",Vector3.new(0.409999996, 0.300000072, 0.419999987))
+Cylinderweld=weld(m7,handle3,Cylinder,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0164413452, -2.25010324, -0.0211257935, -0.00102520071, 0.000457523507, 1.00000453, -1.47663559e-005, 0.999999881, -0.000457536342, -1.00000465, -1.52354896e-005, -0.00102519384))
+FlameParticlePart=part(Enum.FormFactor.Custom,m7,Enum.Material.Plastic,0,1,"Medium stone grey","FlameParticlePart",Vector3.new(0.200000003, 1, 0.200000003))
+FlameParticlePartweld=weld(m7,handle3,FlameParticlePart,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0214996338, -2.69996572, 0.0108203888, 0.00103580183, -0.000457523362, -1.00000453, -1.52354241e-005, 0.999999881, -0.000457536837, 1.00000453, 1.57094037e-005, 0.00103579485))
+Cylinder=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Reddish brown","Cylinder",Vector3.new(0.400000006, 2, 0.400000006))
+Cylinderweld=weld(m7,handle3,Cylinder,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0123519897, -1.20010448, -0.0111579895, -0.00102520071, 0.000457523507, 1.00000453, -1.47663559e-005, 0.999999881, -0.000457536342, -1.00000465, -1.52354896e-005, -0.00102519384))
+Part=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Earth green","Part",Vector3.new(2, 0.399999976, 2))
+Partweld=weld(m7,handle3,Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0, -0.950022221, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+	
+	
+	
+	
+	
+	
+	
+
+handle4=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Burnt Sienna","Handle",Vector3.new(2, 1.5, 2))
+handle4weld=weld(m7,Character["Torso"],handle4,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.99001122, -0.200009346, -0.00999450684, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.358200133, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.81749725, 0.78591156, -2.77061653, 0.749498606, -0.59501487, 0.290184408, 0.121044822, -0.3077797, -0.943724453, 0.650844932, 0.742447495, -0.15865849))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.341142595, 0.341142833))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.449455887, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.28393078, -0.316062927, -0.678157806, -0.264485836, -0.934280932, 0.239063457, 0.543841302, 0.0602172837, 0.837016106, -0.796409369, 0.351395547, 0.492179215))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.511713922, 0.51171422))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.321527272, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.5572052, -2.30621147, -1.07270813, 0.378806591, -0.665063977, 0.64356935, 0.748727739, 0.628965139, 0.209270343, -0.543964922, 0.402588397, 0.736214519))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.255856961, 0.25585711))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739992, 0.475893676, 0.591029584))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.94959259, -2.13926697, 0.230997086, 0.0194318704, -0.789119124, -0.613932788, 0.178130463, 0.606957793, -0.774513423, 0.983813524, -0.0943098813, 0.152359337))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584274, 0.564590752, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.82694626, 0.556640625, -0.811518669, -0.214003801, -0.973544359, -0.0800733119, 0.0180371143, -0.0858959258, 0.996138752, -0.976663709, 0.211733922, 0.0359417722))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739992, 0.475893676, 0.591029584))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.58782959, 1.17198181, 0.148159027, -0.110975303, -0.959684789, -0.258242011, 0.156110525, -0.273455024, 0.949129224, -0.981484234, 0.0650152341, 0.180164844))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.373550892, 0.289971262))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.63751602, 0.894630432, -0.0481052399, 0.122507304, -0.932969928, 0.338455111, -0.580161452, -0.344010651, -0.73828733, 0.805234969, -0.105912708, -0.583419025))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.80168575, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.510007918, 0.349671185))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.19249344, 0.0146484375, 1.66557312, 0.0774470121, -0.770230532, 0.633043528, -0.963110626, 0.106330432, 0.247201413, -0.257713765, -0.628838718, -0.733582735))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.767571449, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.282295376, 0.319821209))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.43525696, -1.20949554, 0.370708466, 0.238693014, -0.853102028, 0.463941306, 0.247379661, 0.515408158, 0.820461035, -0.939055681, -0.0810692012, 0.334064782))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.801685691, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584244, 0.564590693, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.90694261, 1.02528763, 0.184749603, 0.312680364, -0.945843577, -0.0872194022, -0.599603295, -0.267763615, 0.754170477, -0.736682832, -0.183518738, -0.650856912))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584244, 0.564590693, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.82100296, -0.851806641, 0.0293016434, 0.0990996957, -0.945219755, 0.31102699, 0.0711048692, 0.318494946, 0.945251703, -0.99253124, -0.071558848, 0.0987729952))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739962, 0.475893646, 0.486981064))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.74431062, 0.123939514, 0.257888794, 0.176134542, -0.980010331, 0.0924808607, 0.202397704, 0.127997756, 0.970900893, -0.963332891, -0.152291685, 0.220896453))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584244, 0.564590693, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.57273865, -0.647781372, -1.28352737, 0.0263134111, -0.934305608, -0.355500221, -0.958377004, 0.0775548145, -0.274761409, 0.284281909, 0.347933382, -0.89337641))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739962, 0.475893646, 0.591029584))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.60911942, -1.00043869, 0.449501038, 0.0377567485, -0.958557308, -0.282389313, 0.294178694, 0.280730814, -0.91358918, 0.955002189, -0.0485782363, 0.292584747))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.389755189, 0.391461194))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.6599884, -2.43762589, 0.127637863, -0.0149865914, -0.6826455, -0.730594873, -0.0992809832, 0.728082418, -0.678260505, 0.994945109, 0.0623692945, -0.0786853433))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.801685691, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.347965658, 0.415340871, 0.289971262))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.9302845, 1.1116333, -3.32255363, 0.882076919, 0.330199838, -0.336014628, -0.157129988, -0.466195792, -0.870614052, -0.44412604, 0.820746779, -0.359335899))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.226007149, 0.364169508, 0.591029584))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.67074966, -1.05129242, 0.184011459, 0.00361419609, -0.913431644, 0.406975895, 0.269066244, 0.392858446, 0.879353404, -0.963112891, 0.106325462, 0.247193351))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.226007149, 0.364169508, 0.608939588))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.73565483, 0.784629822, -0.306827545, 0.118617803, -0.934758306, 0.334894657, -0.0131231314, -0.338721961, -0.940793276, 0.992851675, 0.107200764, -0.0524453111))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.397430867, 0.337731212))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.77118826, -0.0990219116, -0.58751297, 0.361947745, -0.932138562, -0.0103007751, -0.304055899, -0.107605562, -0.946556509, 0.881215751, 0.345736623, -0.322370768))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.801685691, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739962, 0.475893646, 0.486981064))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.63727236, 0.278862, 0.426071167, 0.272303402, -0.960415542, 0.0587511696, -0.718641043, -0.162391603, 0.676152706, -0.639847159, -0.226340204, -0.734414339))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.336878121, 0.648170888))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.53615808, 0.622344971, 0.0700836182, 0.393486112, -0.916992903, -0.0655254051, -0.721542597, -0.352212965, 0.596088052, -0.569686234, -0.187273607, -0.800240576))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.801685691, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584244, 0.564590693, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.74057531, -0.7525177, -0.0823287964, 0.354520559, -0.930946231, 0.0874845982, 0.930383265, 0.360538214, 0.0662911162, -0.0932556465, 0.0578939132, 0.993955195))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250739962, 0.475893646, 0.60382241))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.61720657, -0.54397583, 0.127574921, 0.246721715, -0.933555961, 0.259999305, -0.156914949, 0.226268888, 0.961341143, -0.95629555, -0.277982354, -0.0906635895))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.410223722, 0.390608281))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.35827637, 1.17188644, -0.100982666, 0.334867477, -0.875393033, -0.348640352, -0.480991721, -0.476971269, 0.735624313, -0.810252011, -0.0786438063, -0.580778837))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.801685691, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.461395055, 0.284854114))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.98121071, 1.9170208, 0.257736206, 0.79016608, -0.583489776, 0.187554523, -0.598375559, -0.800649822, 0.0300903134, 0.13260892, -0.136005402, -0.981791794))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.955199957, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.77769089, -0.942741394, -1.18501091, -0.683038712, 0.704521537, -0.192603126, 0.227063656, 0.455467075, 0.860803187, 0.694180489, 0.544227719, -0.471075565))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(0.869914353, 0.341142535, 0.341142714))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.35734722, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.21497345, -0.683227539, -0.819526672, 0.565418124, -0.803170323, 0.187630415, 0.729789138, 0.38117528, -0.567536771, 0.384311259, 0.457830012, 0.801675498))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.255856872, 0.25585705))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.25585711, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.03390121, 1.08163071, 0.313110352, -0.140581861, -0.963201642, -0.229051873, 0.872469127, -0.229882538, 0.431203246, -0.467993766, -0.139221594, 0.872689247))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.511713624, 0.511713922))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.382079959, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.0623436, -1.28939819, 1.07917404, 0.0153681589, -0.86904335, -0.494496584, 0.488361597, 0.438077658, -0.754712045, 0.872505844, -0.229894951, 0.431138754))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.42642802, 0.426428199))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.382079959, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.06261253, 0.681121826, -2.02637291, 0.843581736, -0.506543696, 0.178278372, 0.0146558415, -0.310148984, -0.950573564, 0.5368011, 0.804499388, -0.254212677))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.42642802, 0.426428199))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584453, 0.564590991, 0.603822768))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.70438194, 0.205935478, 0.314361572, -0.290661067, -0.956298888, 0.0317639597, 0.935599148, -0.291011155, -0.199907377, 0.200414553, -0.028385926, 0.979297817))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.226007268, 0.501479626, 0.591029882))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.5724411, -0.751052856, -0.462134361, -0.246905491, -0.879038095, 0.407831132, 0.332095116, 0.318618447, 0.887800157, -0.910354912, 0.354642898, 0.213256091))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.338584453, 0.564590991, 0.603822768))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.83361435, 0.229129791, 0.0681037903, -0.108283035, -0.993199706, 0.0427488312, -0.617702603, 0.100914143, 0.779908001, -0.778918505, 0.0580444224, -0.624429584))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250740111, 0.475893945, 0.591029882))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.45165062, 1.09331512, 0.256744385, -0.33815369, -0.901430368, -0.270327419, 0.583753228, -0.426225007, 0.691058338, -0.73816061, 0.0758797079, 0.670342803))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.318968564, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.55222893, -0.668136597, 1.72854996, -0.726569176, -0.526454329, 0.441521853, -0.658697307, 0.350878388, -0.665581405, 0.195478767, -0.774421811, -0.601712584))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.170571238, 0.170571342))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.433251441, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.421772, -1.75602722, 1.85966873, 0.81712997, 0.203852251, -0.539192915, 0.311512798, 0.630867064, 0.710600793, 0.485020429, -0.74862349, 0.452000797))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.255856872, 0.255857021))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.582501471, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.33629417, -0.196836472, -0.155921936, -0.208376691, -0.977858722, -0.0192411803, -0.971078932, 0.204507187, 0.12321613, -0.11655312, 0.0443599969, -0.992193043))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.767570555, 0.767570972))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.544122875, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.88216162, 0.277702332, -0.0888214111, -0.212695926, -0.972005427, 0.099754028, 0.903702676, -0.234513164, -0.358205885, 0.371572465, 0.013958226, 0.92829144))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.596999347, 0.596999645))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.467365742, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.82990599, -0.101915359, -0.123069763, -0.155083254, -0.987798512, -0.0142068621, -0.987755239, 0.154797733, 0.0193839688, -0.0169482958, 0.0170390438, -0.999710143))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.852856159, 0.852856636))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.341142863, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.82169342, 2.16288376, -1.55065918, 0.852257371, 0.115922086, -0.510117531, -0.238172427, -0.782222092, -0.575672686, -0.465759575, 0.612118661, -0.639044404))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.42642808, 0.426428318))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.287412882, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.65643692, 0.713541031, 0.0321044922, 0.408724338, -0.907483459, 0.097037971, -0.910114467, -0.413205773, -0.0308248028, 0.0680696219, -0.0757170245, -0.994801819))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.682284951, 0.682285249))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.564591467, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.79465485, 0.446304321, 0.0929489136, 0.32505393, -0.940921128, 0.0949007049, -0.941236615, -0.312156409, 0.128957763, -0.0917152762, -0.131242424, -0.987097502))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.852856159, 0.852856636))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.382080048, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.45742035, 1.62772369, 0.429321289, -0.215568259, -0.886582553, -0.409251124, 0.753318667, -0.417659789, 0.507992983, -0.62130934, -0.198789656, 0.757920861))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.596999347, 0.596999645))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.262679994, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.56902695, -2.21526337, 1.05091476, -0.71170485, -0.476996988, -0.515699863, -0.167201385, 0.828045666, -0.535148084, 0.682287753, -0.294641823, -0.669080675))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.170571238, 0.170571342))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.51768434, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(2.35046887, 0.344348907, -0.033782959, 0.273017704, -0.96060133, 0.0520094819, -0.961020291, -0.26988858, 0.0599922538, -0.0435919352, -0.0663612112, -0.996842504))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.767570555, 0.767570972))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.257562876, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-1.38097763, -1.15034771, 2.13050079, 0.543052912, 0.47555548, 0.692043841, -0.838353455, 0.353508979, 0.414940476, -0.0473156683, -0.805517852, 0.59066391))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.341142476, 0.341142684))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.410224319, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.29466629, 1.05168915, 2.03616714, -0.377924055, -0.544334471, -0.748909891, 0.919271231, -0.316755563, -0.233665168, -0.110029764, -0.776761651, 0.620103657))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.42642808, 0.426428318))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250740021, 0.475893736, 0.486981124))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.22978783, -1.31443596, 0.194839478, -0.55274874, -0.731341422, 0.399507344, -0.647685349, 0.678676248, 0.34626466, -0.524373829, -0.0673585832, -0.848817408))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.243916869, 0.390608341))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.46474457, -2.27048874, -0.583358765, 0.800108969, 0.492492825, 0.342444122, -0.216946542, 0.769823849, -0.60024631, -0.559238791, 0.405974001, 0.722788692))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.80168581, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.26097396, 0.419605494))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.25593472, -0.620800018, 0.26953125, -0.393297493, -0.8267169, 0.402310848, -0.457145572, 0.555490553, 0.694582701, -0.797703385, 0.0892632976, -0.596404374))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.80168581, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.275472462, 0.337731272))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-2.66137695, -2.0110817, 0.660499573, 0.793993533, 0.558951378, 0.239029109, -0.526046693, 0.82879442, -0.190690085, -0.304695398, 0.0256670006, 0.952099741))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.80168581, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.250740021, 0.475893736, 0.486981124))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.69801569, 0.111289978, -0.166656494, -0.222937271, -0.972951293, 0.0605425499, -0.94250524, 0.230989709, 0.241504058, -0.248954877, -0.00322181755, -0.968507469))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Leaves=part(Enum.FormFactor.Custom,m7,Enum.Material.Grass,0,0.050000011920929,"Grime","Leaves",Vector3.new(0.200000003, 0.502332211, 0.45798406))
+Leavesweld=weld(m7,handle4,Leaves,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(3.39743614, 0.209518433, -1.09343719, -0.500072181, -0.855079949, -0.136980474, -0.522330821, 0.171663135, 0.835284293, -0.690720797, 0.489252508, -0.532479405))
+mesh("BlockMesh",Leaves,"","",Vector3.new(0, 0, 0),Vector3.new(0.80168581, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.3769629, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.33537817, 0.481137276, 0.011756897, 0.342501104, -0.937739491, 0.057777945, -0.938707769, -0.339003205, 0.0624964014, -0.0390185639, -0.0756416693, -0.996370971))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.938142002, 0.938142478))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.469071507, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.37717676, -0.152431488, -0.0629425049, -0.181039914, -0.983340025, 0.0163265411, -0.981766522, 0.179722026, -0.0619215146, 0.0579557717, -0.0272391196, -0.997946858))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.938142002, 0.938142478))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.426428646, 0.204685524, 0.204685628))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.27161884, -0.0265989304, -0.0973968506, -0.0731751919, -0.997318506, -1.25521382e-007, -0.986233711, 0.0723618641, 0.148680523, -0.148281798, 0.0108798593, -0.988885105))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.255857199, 0.204685524, 0.204685628))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.20126081, 0.162733078, -0.0706939697, 1.55453381e-006, -0.999999881, 1.68345161e-006, -0.80703944, -2.45979692e-007, 0.590496004, -0.590496123, -2.2859474e-006, -0.807039559))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Brick=part(Enum.FormFactor.Custom,m7,Enum.Material.Wood,0,0,"Brown","Brick",Vector3.new(0.451161474, 0.200000003, 0.200000003))
+Brickweld=weld(m7,handle4,Brick,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.28985381, 0.0887775421, 0.0614318848, -2.62237836e-006, -0.998280942, 0.0586035326, -0.999999464, 2.57411989e-006, -1.36042729e-006, 1.02971399e-006, -0.0586035773, -0.998280764))
+mesh("BlockMesh",Brick,"","",Vector3.new(0, 0, 0),Vector3.new(1, 0.955199063, 0.660963953))
+Part=part(Enum.FormFactor.Brick,m7,Enum.Material.Grass,0,0,"Earth green","Part",Vector3.new(2, 0.399999976, 2))
+Partweld=weld(m7,handle4,Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0, -0.95002079, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+	
+	
+m2 = it("Model")
+m2.Parent=Character
+
+Cloud_Main=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Handle",Vector3.new(4, 1, 2))
+Cloud_Mainweld=weld(m2,Character["Head"],Cloud_Main,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.268424988, -9.33784294, -0.680183411, 0.996205449, -0.0123700052, -0.0861490443, 0.0132893277, 0.999860644, 0.0101059675, 0.0860120282, -0.011212483, 0.996231019))
+Cloud_Part=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Cloud_Part",Vector3.new(4, 1, 2))
+Cloud_Partweld=weld(m2,Cloud_Main,Cloud_Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.952827454, 1.29257202, 0.526079178, 0.975171149, -0.221452951, 6.70552254e-008, 0.221452922, 0.975171089, -2.79396772e-009, -5.96046448e-008, 1.76951289e-008, 1))
+Cloud_Part=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Cloud_Part",Vector3.new(4, 1, 2))
+Cloud_Partweld=weld(m2,Cloud_Main,Cloud_Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.097158432, 0.987468719, 0.623996735, 1, -4.65661287e-010, 0, -4.65661287e-010, 1, 0, 0, 0, 1))
+Cloud_Part=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Cloud_Part",Vector3.new(4, 1, 2))
+Cloud_Partweld=weld(m2,Cloud_Main,Cloud_Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.231565475, 0.449699402, -0.426206589, 1, -4.65661287e-010, 0, -4.65661287e-010, 1, 0, 0, 0, 1))
+Cloud_Part=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Cloud_Part",Vector3.new(4, 1, 2))
+Cloud_Partweld=weld(m2,Cloud_Main,Cloud_Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.122610092, 0.611061096, 0.976938248, 1, -4.65661287e-010, 0, -4.65661287e-010, 1, 0, 0, 0, 1))
+Cloud_Part=part(Enum.FormFactor.Brick,m2,Enum.Material.Neon,0,1,"Institutional white","Cloud_Part",Vector3.new(4, 1, 2))
+Cloud_Partweld=weld(m2,Cloud_Main,Cloud_Part,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(1.1725502, 0.255630493, 0.0988025665, 1, -4.65661287e-010, 0, -4.65661287e-010, 1, 0, 0, 0, 1))
+
+
+
+m3 = it("Model")
+m3.Parent=Character
+
+Snow=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","Snow",Vector3.new(3.5800004, 0.200000003, 2.97000027))
+Snowweld=weld(m3,Cloud_Main,Snow,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.222294807, 0.020401001, 0.492078781, -0.996205449, -0.0132893277, -0.0860120282, 0.0123700052, -0.999860644, 0.011212483, -0.0861490443, 0.0101059675, 0.996231019))
+Sun=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,1,1,"Dark stone grey","Sun",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Sunweld=weld(m3,Cloud_Main,Sun,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-4.81953049, -2.23334885, 0.968902588, 0.996205449, 0.0132893277, 0.0860120282, -0.0123700052, 0.999860644, -0.011212483, -0.0861490443, 0.0101059675, 0.996231019))
+Lightning=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","Lightning",Vector3.new(3.74000025, 0.200000003, 1))
+Lightningweld=weld(m3,Cloud_Main,Lightning,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.588763237, 1.06383133, -0.979560852, -0.996165276, -0.013825519, -0.0864600465, -0.0129060233, 0.99985081, -0.0111315539, 0.0865983292, -0.00997387897, -0.996199131))
+LightningGlow=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","LightningGlow",Vector3.new(3.74000025, 0.200000003, 1))
+LightningGlowweld=weld(m3,Cloud_Main,LightningGlow,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.587859154, -0.636631012, -0.979776382, -0.996165276, -0.013825519, -0.0864600465, -0.0129060233, 0.99985081, -0.0111315539, 0.0865983292, -0.00997387897, -0.996199131))
+Rain=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","Rain",Vector3.new(4.89000034, 0.200000003, 3.2699995))
+Rainweld=weld(m3,Cloud_Main,Rain,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.592903137, -0.00120925903, -0.311470032, 1, 1.24727376e-006, -3.7252903e-008, 1.2521632e-006, -1, -9.31322575e-010, -7.4505806e-009, -7.4505806e-009, -0.99999994))
+Auttum=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","Auttum",Vector3.new(3.65000057, 5.65999985, 3.4000001))
+Auttumweld=weld(m3,Cloud_Main,Auttum,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.509860039, -5.9511261, -0.808195114, 0.996205449, 0.0132893277, 0.0860120282, 0.0123700052, -0.999860644, 0.011212483, 0.0861490443, -0.0101059675, -0.996231019))
+Hurricane=part(Enum.FormFactor.Brick,m3,Enum.Material.Neon,0,1,"Institutional white","Snow",Vector3.new(3.5800004, 0.200000003, 2.97000027))
+Hurricaneweld=weld(m3,Cloud_Main,Hurricane,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.222294807, 0.020401001, 0.492078781, -0.996205449, -0.0132893277, -0.0860120282, 0.0123700052, -0.999860644, 0.011212483, -0.0861490443, 0.0101059675, 0.996231019))
+
+
+local Sunlight = Instance.new("PointLight", Sun)
+Sunlight.Enabled = false
+Sunlight.Shadows = true
+Sunlight.Name = "Sunlight"
+Sunlight.Color = Color3.new(1, 1, 0)
+Sunlight.Brightness = 10
+Sunlight.Range = 18
+
+
+local CorniaEmitter = Instance.new("ParticleEmitter", Sun)
+CorniaEmitter.VelocitySpread = 360
+CorniaEmitter.Lifetime = NumberRange.new(1)
+CorniaEmitter.Speed = NumberRange.new(0)
+CorniaEmitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 9), NumberSequenceKeypoint.new(1, 9)})
+CorniaEmitter.Enabled = false
+CorniaEmitter.LockedToPart = true
+CorniaEmitter.Rate = 5
+CorniaEmitter.Rotation = NumberRange.new(0, 360)
+CorniaEmitter.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(0.5, 0.744), NumberSequenceKeypoint.new(1, 1)})
+CorniaEmitter.Name = "CorniaEmitter"
+CorniaEmitter.LightEmission = 1
+CorniaEmitter.Color = ColorSequence.new(Color3.new(1, 1, 0), Color3.new(1, 1, 0))
+CorniaEmitter.Texture = "http://www.roblox.com/asset/?id=243660364"
+CorniaEmitter.LockedToPart = true
+
+
+local SunEmitter = Instance.new("ParticleEmitter", Sun)
+SunEmitter.Lifetime = NumberRange.new(1)
+SunEmitter.Speed = NumberRange.new(0)
+SunEmitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 6), NumberSequenceKeypoint.new(1, 6)})
+SunEmitter.Enabled = false
+SunEmitter.LockedToPart = true
+SunEmitter.Rate = 5
+SunEmitter.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0.5)})
+SunEmitter.Name = "SunEmitter"
+SunEmitter.LightEmission = 1
+SunEmitter.Color = ColorSequence.new(Color3.new(1, 1, 0), Color3.new(1, 1, 0))
+SunEmitter.Texture = "http://www.roblox.com/asset/?id=243660373"
+SunEmitter.LockedToPart = true
+
+
+local lightningemitter = Instance.new("ParticleEmitter", Lightning)
+lightningemitter.Lifetime = NumberRange.new(0.2)
+lightningemitter.Speed = NumberRange.new(0)
+lightningemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 1.043), NumberSequenceKeypoint.new(0.061, 3.374, 0.706), NumberSequenceKeypoint.new(0.12, 0), NumberSequenceKeypoint.new(0.175, 3.344, 0.828), NumberSequenceKeypoint.new(0.238, 0), NumberSequenceKeypoint.new(0.312, 3.374, 0.798), NumberSequenceKeypoint.new(0.398, 0), NumberSequenceKeypoint.new(0.476, 3.65, 0.982), NumberSequenceKeypoint.new(0.535, 0.031), NumberSequenceKeypoint.new(0.607, 3.773, 0.951), NumberSequenceKeypoint.new(0.668, 0), NumberSequenceKeypoint.new(0.729, 3.804, 1.196), NumberSequenceKeypoint.new(0.82, 0), NumberSequenceKeypoint.new(0.875, 3.834, 1.135), NumberSequenceKeypoint.new(0.933, 0), NumberSequenceKeypoint.new(1, 3, 0.736)})
+lightningemitter.Enabled = false
+lightningemitter.LockedToPart = true
+lightningemitter.Rate = 1
+lightningemitter.Name = "LightningEmitter"
+lightningemitter.LightEmission = 1
+lightningemitter.Color = ColorSequence.new(Color3.new(0.27451, 0.607843, 1), Color3.new(1, 1, 1))
+lightningemitter.Texture = "http://www.roblox.com/asset/?id=243098098"
+lightningemitter.LockedToPart = true
+
+
+local lightningglowemitter = Instance.new("ParticleEmitter", LightningGlow)
+lightningglowemitter.Lifetime = NumberRange.new(1)
+lightningglowemitter.Speed = NumberRange.new(0)
+lightningglowemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 4), NumberSequenceKeypoint.new(1, 4)})
+lightningglowemitter.Enabled = false
+lightningglowemitter.LockedToPart = true
+lightningglowemitter.Rate = 1
+lightningglowemitter.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 1), NumberSequenceKeypoint.new(0.1, 0.5), NumberSequenceKeypoint.new(0.8, 0.5), NumberSequenceKeypoint.new(1, 1)})
+lightningglowemitter.Name = "LightningGlowEmitter"
+lightningglowemitter.LightEmission = 1
+lightningglowemitter.Color = ColorSequence.new(Color3.new(0.27451, 0.607843, 1), Color3.new(1, 1, 1))
+lightningglowemitter.Texture = "http://www.roblox.com/asset/?id=243660373"
+lightningglowemitter.LockedToPart = true
+
+
+
+local rainemitter = Instance.new("ParticleEmitter", Rain)
+rainemitter.Lifetime = NumberRange.new(0.6)
+rainemitter.Speed = NumberRange.new(15)
+rainemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.5), NumberSequenceKeypoint.new(1, 0.5)})
+rainemitter.Enabled = false
+rainemitter.LockedToPart = true
+rainemitter.Name = "RainEmitter"
+rainemitter.LightEmission = 0.1
+rainemitter.Color = ColorSequence.new(Color3.new(0, 0.666667, 1), Color3.new(0, 0.666667, 1))
+rainemitter.Texture = "http://www.roblox.com/asset/?id=243132757"
+rainemitter.LockedToPart = true
+
+
+
+local snowemitter = Instance.new("ParticleEmitter", Snow)
+snowemitter.Lifetime = NumberRange.new(4, 13)
+snowemitter.Speed = NumberRange.new(0.5, 1)
+snowemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.016, 0.062), NumberSequenceKeypoint.new(0.066, 0.375), NumberSequenceKeypoint.new(0.122, 0), NumberSequenceKeypoint.new(0.231, 0.125), NumberSequenceKeypoint.new(0.339, 0), NumberSequenceKeypoint.new(0.708, 0.437), NumberSequenceKeypoint.new(1, 0)})
+snowemitter.Enabled = false
+snowemitter.RotSpeed = NumberRange.new(60)
+snowemitter.Rate = 3
+snowemitter.Rotation = NumberRange.new(360)
+snowemitter.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.893, 0), NumberSequenceKeypoint.new(1, 1)})
+snowemitter.Name = "SnowEmitter"
+snowemitter.LightEmission = 1
+snowemitter.Texture = "http://www.roblox.com/asset/?id=242837894"
+snowemitter.LockedToPart = true
+
+local auttumemitter = Instance.new("ParticleEmitter", Auttum)
+auttumemitter.Lifetime = NumberRange.new(1, 12)
+auttumemitter.Speed = NumberRange.new(0.5, 1)
+auttumemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.07, 0.25), NumberSequenceKeypoint.new(0.178, 0), NumberSequenceKeypoint.new(0.302, 0.313), NumberSequenceKeypoint.new(0.405, 0), NumberSequenceKeypoint.new(0.545, 0.313), NumberSequenceKeypoint.new(1, 0)})
+auttumemitter.Enabled = false
+auttumemitter.RotSpeed = NumberRange.new(10)
+auttumemitter.Rate = 2
+auttumemitter.Rotation = NumberRange.new(360)
+auttumemitter.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0, 0), NumberSequenceKeypoint.new(0.976, 0), NumberSequenceKeypoint.new(1, 1)})
+auttumemitter.Name = "AuttumEmitter"
+auttumemitter.Color = ColorSequence.new(Color3.new(0.921569, 0.545098, 0.0196078), Color3.new(0.666667, 0.333333, 0))
+auttumemitter.Texture = "http://www.roblox.com/asset/?id=242842525"
+auttumemitter.LockedToPart = true
+
+local particleemitter = Instance.new("ParticleEmitter", FlameParticlePart)
+particleemitter.ZOffset = 2
+particleemitter.Lifetime = NumberRange.new(0.5)
+particleemitter.Speed = NumberRange.new(2)
+particleemitter.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 0.437), NumberSequenceKeypoint.new(1, 0)})
+particleemitter.Rate = 30
+particleemitter.LightEmission = 0.8
+particleemitter.Color = ColorSequence.new(Color3.new(1, 0.411765, 0.0745098), Color3.new(1, 1, 0.498039))
+particleemitter.Texture = "http://www.roblox.com/asset/?id=242102147"
+particleemitter.LockedToPart = true
+
+    local sou = Instance.new("Sound", Cloud_Main)
+    sou.Volume = 10
+    sou.SoundId = "http://roblox.com/asset/?id=256165333"
+    sou:Play()
+
+plr = game:service'Players'.LocalPlayer
+
+plr.Chatted:connect(function(msg)
+    		--[[--Nature--]]--
+
+
+    
+    if msg == "Sun" then
+        CorniaEmitter.Enabled = true
+        SunEmitter.Enabled = true
+        Sunlight.Enabled = true
+    end
+    
+    if msg == "NoSun" then
+        CorniaEmitter.Enabled = false
+        SunEmitter.Enabled = false
+        Sunlight.Enabled = false
+    end
+
+
+    
+    if msg == "Cloud" then
+    Cloud = true
+for _,c in pairs(m2:GetChildren()) do
+      		if c:IsA("Part") then
+ 				c.Transparency = 0
+      		end
+      	end
+end
+    
+    if msg == "NoCloud" then
+    Cloud = false
+	snowemitter.Enabled = false
+	rainemitter.Enabled = false
+	lightningglowemitter.Enabled = false
+	lightningemitter.Enabled = false
+	auttumemitter.Enabled = false
+	
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Earth green")
+    	end
+    end
+for _,c in pairs(m2:GetChildren()) do
+      		if c:IsA("Part") then
+ 				c.Transparency = 1
+      		end
+      	end
+end
+
+
+    
+    		--[[--Weather--]]--
+
+
+    
+    if msg == "Fallout" then
+    
+Handle=part(Enum.FormFactor.Custom,m7,Enum.Material.Plastic,0,0,"Medium stone grey","Handle",Vector3.new(6.60758018, 5.39011765, 4.88526869))
+Handleweld=weld(m7,Character["Torso"],Handle,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(0.0649852753, -4.69505882, -0.0168714523, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+mesh("SpecialMesh",Handle,Enum.MeshType.FileMesh,"rbxassetid://153994027",Vector3.new(0, 0, 0),Vector3.new(0.76957649, 0.769576907, 0.769576609),"rbxassetid://19637428")
+
+    for i,v in pairs(m2:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.Material = "CorrodedMetal"
+    	end
+    end
+
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.Material = "CorrodedMetal"
+    	end
+    end
+
+    for i,v in pairs(m7:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.Material = "CorrodedMetal"
+    	end
+    end
+    
+rainemitter.Enabled = false
+lightningglowemitter.Enabled = false
+lightningemitter.Enabled = false
+    end
+
+
+    
+    if msg == "Storm" and Cloud then
+    for i,v in pairs(m2:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.BrickColor = BrickColor.new("Smoky grey")
+    	end
+    end
+rainemitter.Enabled = true
+lightningglowemitter.Enabled = true
+lightningemitter.Enabled = true
+    end
+    
+    if msg == "NoStorm" then
+    for i,v in pairs(m2:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.BrickColor = BrickColor.new("Institutional white")
+    	end
+    end
+rainemitter.Enabled = false
+lightningglowemitter.Enabled = false
+lightningemitter.Enabled = false
+    end
+
+
+    
+    		--[[--Seasons--]]--
+    
+    if msg == "Autumn" then 
+    for i,v in pairs(m2:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.BrickColor = BrickColor.new("Institutional white")
+    	end
+    end
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Deep orange")
+    	end
+end
+    for i,v in pairs(m7:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Deep orange")
+    	end
+end
+snowemitter.Enabled = false
+rainemitter.Enabled = false
+lightningglowemitter.Enabled = false
+lightningemitter.Enabled = false
+auttumemitter.Enabled = true
+    end
+    
+    if msg == "NoAutumn" then
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Earth green")
+    	end
+auttumemitter.Enabled = false
+end
+    for i,v in pairs(m7:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Earth green")
+    	end
+end
+    end
+
+
+    
+    if msg == "Winter" and Cloud then 
+    for i,v in pairs(m2:GetChildren()) do
+      	if v:IsA("Part") then
+        	v.BrickColor = BrickColor.new("Institutional white")
+    	end
+    end
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Institutional white")
+    	end
+end
+    for i,v in pairs(m7:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Institutional white")
+    	end
+end
+auttumemitter.Enabled = false
+rainemitter.Enabled = false
+lightningglowemitter.Enabled = false
+lightningemitter.Enabled = false
+snowemitter.Enabled = true
+    end
+    
+    if msg == "NoWinter" then
+    for i,v in pairs(m:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Earth green")
+    	end
+snowemitter.Enabled = false
+end
+    for i,v in pairs(m7:GetChildren()) do
+      	if v:IsA("Part") and v.Name == "Leaves" then
+        	v.BrickColor = BrickColor.new("Earth green")
+    	end
+end
+    end
+    
+    
+end)--Note to self add seasonal music
+local sine = 1
+local i = 1
+game:service'RunService'.RenderStepped:connect(function()
+i = i + 1
+runtime=0
+sine=sine+.95
+idlesyneinc=35
+angleSpeed = 1
+axisSpeed = 1
+change = 0.5
+
+handle1weld.C0=clerp(handle1weld.C0,CFrame.new(0, .5+.2*math.cos(sine/5), 0)*CFrame.Angles(math.rad(0),math.rad(i),math.rad(0)),.1)
+
+handle2weld.C0=clerp(handle2weld.C0,CFrame.new(0, .5+.2*math.cos(sine/5), 0)*CFrame.Angles(math.rad(0),math.rad(i),math.rad(0)),.1)
+
+handle3weld.C0=clerp(handle3weld.C0,CFrame.new(0, .5+.2*math.cos(sine/5), 0)*CFrame.Angles(math.rad(0),math.rad(i),math.rad(0)),.1)
+
+handle4weld.C0=clerp(handle4weld.C0,CFrame.new(0, .5+.2*math.cos(sine/5), 0)*CFrame.Angles(math.rad(0),math.rad(i),math.rad(0)),.1)
+
+--Mainweld.C0=clerp(Mainweld.C0,CFrame.new(0, .5+.6*math.cos(sine/10), 0)*CFrame.Angles(math.rad(0),math.rad(2020+20*math.cos(sine/10)),math.rad(0)),.1)
+
+Cloud_Mainweld.C0=clerp(Cloud_Mainweld.C0,CFrame.new(0, .5+.6*math.cos(sine/10), 0)*CFrame.Angles(math.rad(0),math.rad(0),math.rad(0)),.1)
+
+end)

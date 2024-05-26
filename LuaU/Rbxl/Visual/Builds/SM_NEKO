@@ -1,0 +1,270 @@
+local plr = game.Players.LocalPlayer
+local chr = plr.Character
+local maus = plr:GetMouse()
+local PGui=plr.PlayerGui
+local lleg = chr["Left Leg"]
+local rleg = chr["Right Leg"]
+local larm = chr["Left Arm"]
+local rarm = chr["Right Arm"]
+local hed = chr.Head
+hed.face.Texture = "http://www.roblox.com/asset/?id=590971067"
+chr.GirlAnimeHair2.Handle.Mesh.TextureId = "rbxassetid://17423956"
+local rutprt = chr.HumanoidRootPart
+local torso = chr.Torso
+local otheranims=false
+local swimming=false
+chr.Animate.Disabled=true
+local fldb={['w']=false,['a']=false,['s']=false,['d']=false}
+local RunSpeed=30
+local WlkSpeed=16
+local SwimSpeed=14
+local SwimDashSpeed=28
+local anim = "Idling"
+local lastanim = "Idling"
+local val = 0
+local syne = 0
+local num = 0
+local runtime = 0
+local pseudohead=hed:Clone()
+for i,x in pairs(pseudohead:GetChildren()) do if not x.ClassName:find('Mesh') then x:Destroy() end end
+pseudohead.Name='PseudoHead'
+pseudohead.Parent=chr.Head
+local pseudoweld=Instance.new('Weld',torso)
+pseudoweld.Part0=hed
+pseudoweld.Name='PseudoHedWld'
+pseudoweld.Part1=pseudohead
+hed.Transparency=1
+
+coroutine.wrap(function()
+for i,x in pairs(hed:GetChildren()) do if x:IsA('Sound') then x:Destroy() end end end)()
+function Lerp(a, b, i)
+local com1 = {a.X, a.Y, a.Z, a:toEulerAnglesXYZ()}
+local com2 = {b.X, b.Y, b.Z, b:toEulerAnglesXYZ()}
+local calx = com1[1] + (com2[1] - com1[1]) * i
+local caly = com1[2] + (com2[2] - com1[2]) * i
+local calz = com1[3] + (com2[3] - com1[3]) * i
+local cala = com1[4] + (com2[4] - com1[4]) * i
+local calb = com1[5] + (com2[5] - com1[5]) * i
+local calc = com1[6] + (com2[6] - com1[6]) * i
+return CFrame.new(calx, caly, calz) * CFrame.Angles(cala, calb, calc)
+end
+function TwnSingleNumber(s,f,m)
+local wot=s+(f-s)*m
+return wot
+end
+function TwnVector3(q,w,e)
+local begin={q.x,q.y,q.z}
+local ending={w.x,w.y,w.z}
+local bgx=begin[1]+(ending[1]-begin[1])*e
+local bgy=begin[2]+(ending[2]-begin[2])*e
+local bgz=begin[3]+(ending[3]-begin[3])*e
+return Vector3.new(bgx,bgy,bgz)
+end
+newWeld = function(wld, wp0, wp1, wc0x, wc0y, wc0z)
+wld = Instance.new("Weld", wp1)
+wld.Part0 = wp0
+wld.Part1 = wp1
+wld.C0 = CFrame.new(wc0x, wc0y, wc0z)
+end
+
+local angles = CFrame.Angles
+function clerp(a, b, t)
+	return a:lerp(b, t)
+end
+
+
+
+
+
+
+
+--[[local mult = 2
+----------------------------------------------------
+larm.Size = larm.Size * mult
+rarm.Size = rarm.Size * mult
+lleg.Size = lleg.Size * mult
+rleg.Size = rleg.Size * mult
+torso.Size = torso.Size * mult
+hed.Size = hed.Size * mult
+rutprt.Size = rutprt.Size * mult
+----------------------------------------------------]]
+newWeld(law, torso, larm, -1.5, 0.5, 0)
+newWeld(raw, torso, rarm, 1.5, 0.5, 0)
+newWeld(llw, torso, lleg, -.5, -2, 0)
+newWeld(rlw, torso, rleg, .5, -2, 0)
+newWeld(hw, torso, hed, 0, 1.5, 0)
+local rutwald=Instance.new('Weld',rutprt)
+rutwald.Part0=rutprt
+rutwald.Part1=torso
+rutprt.Weld.C1=CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),math.rad(0),0)
+larm.Weld.C1 = CFrame.new(0, 0.5, 0)*CFrame.Angles(math.rad(0),0,0)
+rarm.Weld.C1 = CFrame.new(0, 0.5, 0)*CFrame.Angles(math.rad(0),0,0)
+rleg.Weld.C1=CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),0,0)
+lleg.Weld.C1=CFrame.new(0,0,0)*CFrame.Angles(math.rad(0),0,0)
+
+
+
+
+
+
+Player=game:GetService('Players').LocalPlayer
+Character=Player.Character
+Mouse=Player:GetMouse()
+m=Instance.new('Model',Character)
+it=Instance.new
+function nooutline(part)
+	part.TopSurface,part.BottomSurface,part.LeftSurface,part.RightSurface,part.FrontSurface,part.BackSurface = 10,10,10,10,10,10
+end
+function part(shape,parent,material,reflectance,transparency,brickcolor,name,size)
+	local fp=it("Part")
+	fp.Shape=shape
+	fp.Parent=parent
+	fp.Reflectance=reflectance
+	fp.Transparency=transparency
+	fp.CanCollide=false
+	fp.Locked=true
+	fp.BrickColor=BrickColor.new(tostring(brickcolor))
+	fp.Name=name
+	fp.Size=size
+	fp.Position=Character.Torso.Position
+	nooutline(fp)
+	fp.Material=material
+	fp:BreakJoints()
+	return fp
+end
+function mesh(Mesh,part,meshtype,meshid,offset,scale)
+	local mesh=it(Mesh)
+	mesh.Parent=part
+	if Mesh=="SpecialMesh" then
+		mesh.MeshType=meshtype
+		mesh.MeshId=meshid
+	end
+	mesh.Offset=offset
+	mesh.Scale=scale
+	return mesh
+end
+function weld(parent,part0,part1,c0,c1)
+	local weld=it("Weld")
+	weld.Parent=parent
+	weld.Part0=part0
+	weld.Part1=part1
+	weld.C0=c0
+	weld.C1=c1
+	return weld
+end
+
+BULB_handle=part(Enum.PartType.Ball,m,Enum.Material.Neon,0,0,"Daisy orange","Handle",Vector3.new(1.358307, 1.358307, 1.358307))
+BULB_handleweld=weld(m,Character["Right Arm"],BULB_handle,CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.999999881, 0, 0, 0, 1),CFrame.new(1.70946741, 0.00894641876, 0.114945292, -2.90584666e-007, 1, 3.33372165e-013, 2.71949443e-006, 1.12361552e-012, -1, -1, -2.90584694e-007, -2.71949466e-006))
+
+Part=part(Enum.PartType.Cylinder,m,Enum.Material.SmoothPlastic,0,0,"Dark stone grey","Part",Vector3.new(0.558415234, 1.50923002, 1.11683023))
+Partweld=weld(m,BULB_handle,Part,CFrame.new(0, 0, 0, -2.90584666e-007, 1, 3.33372165e-013, 2.71949443e-006, 1.12361552e-012, -1, -1, -2.90584694e-007, -2.71949466e-006),CFrame.new(1.14699936, -1.34706497e-005, 1.34706497e-005, 2.71949443e-006, 2.23574244e-008, -1, 2.90584637e-007, -1, -2.23566339e-008, -1, -2.90584609e-007, -2.71949466e-006))
+
+Part=part(Enum.PartType.Ball,m,Enum.Material.Neon,0,0.40000000596046,"Daisy orange","Part",Vector3.new(2.12801433, 2.12801433, 2.12801433))
+Partweld=weld(m,BULB_handle,Part,CFrame.new(0, 0, 0, -2.90584666e-007, 1, 3.33372165e-013, 2.71949443e-006, 1.12361552e-012, -1, -1, -2.90584694e-007, -2.71949466e-006),CFrame.new(1.1920929e-007, 2.86102295e-006, 8.94069672e-007, -2.90584666e-007, 1, 3.33372165e-013, 2.71949443e-006, 1.12361552e-012, -1, -1, -2.90584694e-007, -2.71949466e-006))
+
+
+
+HAT_handle=part(Enum.PartType.Block,m,Enum.Material.Plastic,0,0,"Institutional white","Handle",Vector3.new(0.75, 0.75, 0.75))
+HAT_handleweld=weld(m,Character["Head"],HAT_handle,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(6.19888306e-006, -0.659864426, 2.47955322e-005, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+local BR = mesh("SpecialMesh",HAT_handle,Enum.MeshType.FileMesh,"http://www.roblox.com/asset/?id=24102243",Vector3.new(0, 0, 0),Vector3.new(0.75, 0.75, 0.75))
+BR.TextureId = "rbxassetid://91970459"
+
+
+
+maus.KeyDown:connect(function(kei)
+if string.byte(kei)==48 and not otheranims then
+runnin=true
+end
+if kei=='w' then fldb.w=true end
+if kei=='a' then fldb.a=true end
+if kei=='s' then fldb.s=true end
+if kei=='d' then fldb.d=true end
+end)
+maus.KeyUp:connect(function(kei)
+if string.byte(kei)==48 and not otheranims then
+runnin=false
+end
+if kei=='w' then fldb.w=false end
+if kei=='a' then fldb.a=false end
+if kei=='s' then fldb.s=false end
+if kei=='d' then fldb.d=false end
+end)
+
+
+
+
+
+game:service'RunService'.RenderStepped:connect(function()
+if anim~=lastanim then
+runtime=0
+end
+lastanim=anim
+chr.Humanoid.CameraOffset=(rutprt.CFrame:toObjectSpace(hed.CFrame)).p+Vector3.new(0,-1.25,0)
+syne=syne+.95
+if not otheranims and not swimming then
+if (torso.Velocity*Vector3.new(1, 0, 1)).magnitude < 1 and not chr.Humanoid.Jump then-- and torso.Velocity.y<5 and torso.Velocity.y>-5
+anim="Idling"
+elseif (rutprt.Velocity*Vector3.new(1, 0, 1)).magnitude > 1 and (rutprt.Velocity*Vector3.new(1, 0, 1)).magnitude < RunSpeed-10 and not chr.Humanoid.Jump then-- and torso.Velocity.y<5 and torso.Velocity.y>-5
+anim="Walking"
+elseif (torso.Velocity*Vector3.new(1, 0, 1)).magnitude > RunSpeed-10 and not chr.Humanoid.Jump then-- and torso.Velocity.y<5 and torso.Velocity.y>-5
+anim="Sprinting"
+elseif torso.Velocity.y>5 and chr.Humanoid.Jump then
+anim='Jumping'
+elseif (torso.Velocity.y < -5) and chr.Humanoid.Jump then
+anim='Falling'
+end
+end
+
+
+if anim=="Idling" then
+idlesineinc=35
+rarm.Weld.C0=clerp(rarm.Weld.C0,CFrame.new(1.5,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(83),math.rad(25),math.rad(-50)),.1)
+larm.Weld.C0=clerp(larm.Weld.C0,CFrame.new(-1.4,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(76),math.rad(4),math.rad(23)),.1)
+lleg.Weld.C0=clerp(lleg.Weld.C0,CFrame.new(-.55,-1.9-math.cos(syne/idlesineinc)/20,(math.cos(syne/idlesineinc)/35))*CFrame.Angles(-(math.cos(syne/idlesineinc)/35),0,math.rad(-2.5)),.1)
+rleg.Weld.C0=clerp(rleg.Weld.C0,CFrame.new(.55,-1.9-math.cos(syne/idlesineinc)/20,(math.cos(syne/idlesineinc)/35))*CFrame.Angles(-(math.cos(syne/idlesineinc)/35),0,math.rad(2.5)),.1)
+hed.Weld.C0=clerp(hed.Weld.C0,CFrame.new(0,1.5+math.cos(syne/idlesineinc)/50,0)*CFrame.Angles(math.cos(syne/idlesineinc)/40,0,0),.1)
+rutprt.Weld.C0=clerp(rutprt.Weld.C0,CFrame.new(0,-.1+math.cos(syne/idlesineinc)/20,0)*CFrame.Angles(math.cos(syne/idlesineinc)/35+math.rad(0),math.rad(0),math.rad(0)),.1)
+end
+
+if anim=="Walking" then
+rarm.Weld.C0=clerp(rarm.Weld.C0,CFrame.new(1.5,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(83),math.rad(25),math.rad(-50)),.1)
+larm.Weld.C0=clerp(larm.Weld.C0,CFrame.new(-1.4,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(76),math.rad(4),math.rad(23)),.1)
+lleg.Weld.C0=clerp(lleg.Weld.C0,CFrame.new(-.55,-1.9-math.cos(syne/6)/10,-(math.cos(syne/6)/1.125))*CFrame.Angles(math.cos(syne/6)/1.125,0,math.rad(-2.5)),.1)
+rleg.Weld.C0=clerp(rleg.Weld.C0,CFrame.new(.55,-1.9-math.cos(syne/6)/10,math.cos(syne/6)/1.125)*CFrame.Angles(-(math.cos(syne/6)/1.125),0,math.rad(2.5)),.1)
+hed.Weld.C0=clerp(hed.Weld.C0,CFrame.new(0,1.5+math.cos(syne/20)/50,0)*CFrame.Angles(-math.cos(syne/3)/20,0,0),.1)
+rutprt.Weld.C0=clerp(rutprt.Weld.C0,CFrame.new(0,-.1+math.cos(syne/3.375)/20,math.cos(syne/3)/5)*CFrame.Angles(math.cos(syne/3)/20+math.rad(-3.5),math.cos(syne/6)/10,-math.cos(syne/6)/30+math.sin(rutprt.RotVelocity.y/2)/7.5),.1)
+end
+
+if anim=="Sprinting" then
+rarm.Weld.C0=clerp(rarm.Weld.C0,CFrame.new(1.5,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(83),math.rad(25),math.rad(-50)),.1)
+larm.Weld.C0=clerp(larm.Weld.C0,CFrame.new(-1.4,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(76),math.rad(4),math.rad(23)),.1)
+lleg.Weld.C0=clerp(lleg.Weld.C0,CFrame.new(-.55,-1.6-math.cos(syne/4)/4,-(math.cos(syne/4)*2)-math.rad(10))*CFrame.Angles(math.cos(syne/4)*2+math.rad(10),0,math.rad(-2.5)),.1)
+rleg.Weld.C0=clerp(rleg.Weld.C0,CFrame.new(.55,-1.6-math.cos(syne/4)/4,math.cos(syne/4)*2-math.rad(10))*CFrame.Angles(-(math.cos(syne/4)*2)+math.rad(10),0,math.rad(2.5)),.1)
+hed.Weld.C0=clerp(hed.Weld.C0,CFrame.new(0,1.55+math.cos(syne/20)/50,0)*CFrame.Angles(-math.cos(syne/2.5)/10+math.rad(20),0,0),.1)
+rutprt.Weld.C0=clerp(rutprt.Weld.C0,CFrame.new(0,-.3+math.cos(syne/2.5)/15,math.cos(syne/2.5))*CFrame.Angles(math.cos(syne/2.5)/10+math.rad(-25),math.cos(syne/2.5)/10,math.cos(syne/4)/20+math.sin(rutprt.RotVelocity.y/2)/4),.1)
+end
+
+if anim=="Jumping" then
+rarm.Weld.C0=clerp(rarm.Weld.C0,CFrame.new(1.5,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(83),math.rad(25),math.rad(-50)),.1)
+larm.Weld.C0=clerp(larm.Weld.C0,CFrame.new(-1.4,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(76),math.rad(4),math.rad(23)),.1)
+lleg.Weld.C0=clerp(lleg.Weld.C0,CFrame.new(-.55,-1.4,0)*CFrame.Angles(math.rad(-17.5),0,math.rad(-2.5)),.1)
+rleg.Weld.C0=clerp(rleg.Weld.C0,CFrame.new(.55,-1.1,-.1)*CFrame.Angles(math.rad(-17.5),0,math.rad(2.5)),.1)
+hed.Weld.C0=clerp(hed.Weld.C0,CFrame.new(0,1.5+math.cos(syne/20)/50,0)*CFrame.Angles(math.cos(syne/20)/40,0,0),.1)
+rutprt.Weld.C0=clerp(rutprt.Weld.C0,CFrame.new(0,-.1+math.cos(syne/20)/20,0)*CFrame.Angles(math.rad(-15),math.rad(0),math.rad(0)),.1)
+end
+
+if anim=="Falling" then
+rarm.Weld.C0=clerp(rarm.Weld.C0,CFrame.new(1.5,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(83),math.rad(25),math.rad(-50)),.1)
+larm.Weld.C0=clerp(larm.Weld.C0,CFrame.new(-1.4,.525+math.cos(syne/idlesineinc)/25,0)*CFrame.Angles(math.rad(76),math.rad(4),math.rad(23)),.1)
+lleg.Weld.C0=clerp(lleg.Weld.C0,CFrame.new(-.55,-1.2,0)*CFrame.Angles(math.rad(-14),0,math.rad(-2.5)),.035)
+rleg.Weld.C0=clerp(rleg.Weld.C0,CFrame.new(.55,-1.9,0)*CFrame.Angles(math.rad(0),0,math.rad(2.5)),.035)
+hed.Weld.C0=clerp(hed.Weld.C0,CFrame.new(0,1.5,-.3)*CFrame.Angles(math.rad(-40),0,0),.035)
+rutprt.Weld.C0=clerp(rutprt.Weld.C0,CFrame.new(0,-.1+math.cos(syne/20)/20,0)*CFrame.Angles(math.rad(10),math.rad(0),math.rad(0)),.035)
+end
+
+if runnin and not otheranims and not swimming then
+chr.Humanoid.WalkSpeed=RunSpeed
+elseif not runnin and not otheranims and not swimming then
+chr.Humanoid.WalkSpeed=WlkSpeed
+end
+end)

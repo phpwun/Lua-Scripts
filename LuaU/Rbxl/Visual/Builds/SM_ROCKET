@@ -1,0 +1,85 @@
+Player=game:GetService('Players').LocalPlayer
+Character=Player.Character
+Mouse=Player:GetMouse()
+m=Instance.new('Model',Character)
+it=Instance.new
+function nooutline(part)
+	part.TopSurface,part.BottomSurface,part.LeftSurface,part.RightSurface,part.FrontSurface,part.BackSurface = 10,10,10,10,10,10
+end
+function part(formfactor,parent,material,reflectance,transparency,brickcolor,name,size)
+	local fp=it("Part")
+	fp.formFactor=formfactor
+	fp.Parent=parent
+	fp.Reflectance=reflectance
+	fp.Transparency=transparency
+	fp.CanCollide=false
+	fp.Locked=true
+	fp.BrickColor=BrickColor.new(tostring(brickcolor))
+	fp.Name=name
+	fp.Size=size
+	fp.Position=Character.Torso.Position
+	nooutline(fp)
+	fp.Material=material
+	fp:BreakJoints()
+	return fp
+end
+function mesh(Mesh,part,meshtype,meshid,offset,scale)
+	local mesh=it(Mesh)
+	mesh.Parent=part
+	if Mesh=="SpecialMesh" then
+		mesh.MeshType=meshtype
+		mesh.MeshId=meshid
+	end
+	mesh.Offset=offset
+	mesh.Scale=scale
+	return mesh
+end
+function weld(parent,part0,part1,c0,c1)
+	local weld=it("Weld")
+	weld.Parent=parent
+	weld.Part0=part0
+	weld.Part1=part1
+	weld.C0=c0
+	weld.C1=c1
+	return weld
+end
+
+TH_1=part(Enum.FormFactor.Brick,m,Enum.Material.Wood,0,0,"Brown","Handle",Vector3.new(1.60000002, 0.200000003, 1.60000002))
+TH_1weld=weld(m,Character["Torso"],TH_1,CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1),CFrame.new(-0.0216417313, 0.423224449, -0.00998210907, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.Neon,0,0,"Institutional white","Part",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(0.600059986, 0.830096245, 0.60007596, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.Wood,0,0,"Brown","Part",Vector3.new(0.400000006, 0.200000003, 0.400000006))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(0.600055218, 0.820105553, 0.600078106, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.DiamondPlate,0,0,"Medium stone grey","Part",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-0.0101480484, -0.70008111, 0.70010376, -0.0176783707, 0.000588355586, 0.999843597, 0.000265352312, 0.999999881, -0.000583755842, -0.999843717, 0.00025499094, -0.0176785253))
+mesh("SpecialMesh",Part,Enum.MeshType.Cylinder,"",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.DiamondPlate,0,0,"Medium stone grey","Part",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-0.00988864899, -0.700114012, -0.700039864, -0.0176783707, 0.000588355586, 0.999843597, 0.000265352312, 0.999999881, -0.000583755842, -0.999843717, 0.00025499094, -0.0176785253))
+mesh("SpecialMesh",Part,Enum.MeshType.Cylinder,"",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.DiamondPlate,0,0,"Medium stone grey","Part",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-0.0101289749, 0.700121403, 0.70004797, -0.0176783707, 0.000588355586, 0.999843597, 0.000265352312, 0.999999881, -0.000583755842, -0.999843717, 0.00025499094, -0.0176785253))
+mesh("SpecialMesh",Part,Enum.MeshType.Cylinder,"",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.Metal,0,0,"Medium stone grey","Part",Vector3.new(2.5, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-0.990089774, -0.0461006165, -6.53266907e-005, 0.707147062, 0.706960678, 0.0122398315, -0.0178329665, 0.000527108321, 0.999840915, 0.706841588, -0.70725292, 0.0129799461))
+mesh("SpecialMesh",Part,Enum.MeshType.Brick,"",Vector3.new(0, 0, 0),Vector3.new(1, 0.5, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.WoodPlanks,0,0,"Brown","Part",Vector3.new(0.600000024, 1, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-1.82029486, -0.0899658203, 1.55014992, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+mesh("SpecialMesh",Part,Enum.MeshType.Brick,"",Vector3.new(0, 0, 0),Vector3.new(1, 0.899999976, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.WoodPlanks,0,0,"Brown","Part",Vector3.new(0.600000024, 1, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(1.82008982, -0.0899772644, 1.55030966, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+mesh("SpecialMesh",Part,Enum.MeshType.Brick,"",Vector3.new(0, 0, 0),Vector3.new(1, 0.899999976, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.Metal,0,0,"Medium stone grey","Part",Vector3.new(2.5, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(0.990061283, 0.0459594727, 2.38418579e-006, 0.706767261, -0.707329094, 0.0128825828, 0.0177331697, -0.00049104268, -0.999842525, 0.707224011, 0.706884563, 0.0121961338))
+mesh("SpecialMesh",Part,Enum.MeshType.Brick,"",Vector3.new(0, 0, 0),Vector3.new(1, 0.5, 1))
+R_1=part(Enum.FormFactor.Brick,m,Enum.Material.Plastic,0,0,"Medium stone grey","R_1",Vector3.new(1, 2, 1))
+R_1weld=weld(m,TH_1,R_1,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(1.82003927, -0.0899600983, 2.10038996, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+R_1mesh = mesh("SpecialMesh",R_1,Enum.MeshType.FileMesh,"http://www.roblox.com/asset/?id=31601976",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+Part=part(Enum.FormFactor.Brick,m,Enum.Material.DiamondPlate,0,0,"Medium stone grey","Part",Vector3.new(0.200000003, 0.200000003, 0.200000003))
+Partweld=weld(m,TH_1,Part,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-0.0098733902, 0.700087786, -0.700100899, -0.0176783707, 0.000588355586, 0.999843597, 0.000265352312, 0.999999881, -0.000583755842, -0.999843717, 0.00025499094, -0.0176785253))
+mesh("SpecialMesh",Part,Enum.MeshType.Cylinder,"",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+R_2=part(Enum.FormFactor.Brick,m,Enum.Material.Plastic,0,0,"Medium stone grey","R_2",Vector3.new(1, 2, 1))
+R_2weld=weld(m,TH_1,R_2,CFrame.new(0, 0, 0, 0.999841154, -0.00027617687, 0.0178195406, 0.0178194139, -0.000448411505, -0.999841094, 0.000284123525, 1, -0.000443419092),CFrame.new(-1.82033348, -0.0899524689, 2.10023117, 0.999840319, -0.000233155195, 0.0178633239, -0.0178631917, 0.00055539317, 0.9998402, -0.000243039191, -1, 0.000551139819))
+R_2mesh = mesh("SpecialMesh",R_2,Enum.MeshType.FileMesh,"http://www.roblox.com/asset/?id=31601976",Vector3.new(0, 0, 0),Vector3.new(1, 1, 1))
+
+R_1mesh.TextureId = "http://www.roblox.com/asset/?id=31601599"
+R_2mesh.TextureId = "http://www.roblox.com/asset/?id=31601599"
